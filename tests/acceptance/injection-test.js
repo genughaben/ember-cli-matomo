@@ -38,7 +38,7 @@ test('should inject two script tags in the html', function(assert) {
     assert.equal(window._paq[1][1], php, 'initialization script has the correct replaced url');
 
     // Inspect the body script src attribute
-    assert.equal($('script').last().attr('src'),
+    assert.equal($('script').last().attr('src') || $('script').last().prev().attr('src'),
       js, 'tracker script has been injected');
   });
 });
