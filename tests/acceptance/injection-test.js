@@ -26,10 +26,10 @@ test('should inject two script tags in the html', function(assert) {
   visit('/');
   andThen(function() {
     // Use the values from the dummy config
-    const sid = config.piwik.sid;
-    const php = config.piwik.url + '/piwik.php';
-    const js = config.piwik.url + '/piwik.js';
-
+    const piwikConfig = config.piwik || config.matomo;
+    const sid = piwikConfig.sid;
+    const php = piwikConfig.url + '/piwik.php';
+    const js = piwikConfig.url + '/piwik.js';
     // Make sure the _paq object is there after the injection
     assert.ok(isArray(window._paq), 'initialization script has been injected');
 

@@ -1,10 +1,8 @@
 # ember-cli-piwik
 
-Inject the Piwik tracking code into an ember-cli application.
+Inject Matomo/Piwik tracking into an ember-cli application.
 
-**Please note that this is not production-ready software** and that it may lack
-many features. Should you feel something is missing or just not right, feel free
-to file a new issue or submit a new PR. Your contribution is mostly appreciated.
+Forked from ember-cli-piwik, which was marked **[p]lease note that this is not production-ready software**, but found quite production-ready by some (except for a "ember-cli-babel 5 is deprecated" warning during the build process, which is fixed here).
 
 ## Installation
 
@@ -17,7 +15,9 @@ ember install ember-cli-piwik
 ## Configuration
 
 This addon is configured via your application's `config/environment.js` file by
-adding two configuration options: `ENV.piwik.sid` and `ENV.piwik.url`.
+adding two configuration options: `ENV.piwik.sid` (site Id) and `ENV.piwik.url`.
+Alternatively, the relevant key may be named `matomo` instead of `piwik`
+(with the latter taking precedence in case both are present).
 
 In order to configure your application, add the following object to your
 environments:

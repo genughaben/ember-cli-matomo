@@ -8,7 +8,7 @@
  * @member {String} head
  * @member {String} body
  */
-let templates = {
+const templates = {
   head: '<script>var _paq=[["setSiteId",{{PIWIK_SID}}],["setTrackerUrl","{{PIWIK_URL}}/piwik.php"],["enableLinkTracking"]]</script>',
   body: '<script src="{{PIWIK_URL}}/piwik.js" async defer></script>'
 };
@@ -21,8 +21,8 @@ let templates = {
  * @param {Object} config The application config.
  * @return {Boolean} Returns `true` if configured, `false` otherwise.
  */
-function isConfigured(config) {
-  return !!(config.piwik && config.piwik.url && config.piwik.sid);
+function isConfigured(piwikConfig) {
+  return !!(piwikConfig && piwikConfig.url && piwikConfig.sid);
 }
 
 
@@ -70,13 +70,14 @@ module.exports = {
    * @return {String} Returns the content to be injected.
    */
   contentFor: function (type, config) {
-    if (isConfigured(config)) {
+    const piwikConfig = config.piwik || config.matomo;
+    if (isConfigured(piwikConfig)) {
       if (type === 'head-footer') {
-        return hydrate(templates.head, config.piwik.url, config.piwik.sid);
+        return hydrate(templates.head, piwikConfig.url, piwikConfig.sid);
       }
 
       if (type === 'body-footer') {
-        return hydrate(templates.body, config.piwik.url, config.piwik.sid);
+        return hydrate(templates.body, piwikConfig.url, piwikConfig.sid);
       }
     }
 
