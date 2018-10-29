@@ -56,7 +56,7 @@ module.exports = {
    * @readOnly
    * @type {String}
    */
-  name: 'ember-cli-piwik',
+  name: 'ember-cli-matomo',
 
 
   /**

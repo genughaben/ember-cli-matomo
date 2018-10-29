@@ -5,7 +5,7 @@ import {
 import { run } from '@ember/runloop';
 import EmberObject from '@ember/object';
 import startApp from '../../helpers/start-app';
-import PageViewTrackerMixin from 'ember-cli-piwik/mixins/page-view-tracker';
+import PageViewTrackerMixin from 'ember-cli-matomo/mixins/page-view-tracker';
 
 let application;
 let originalPush;

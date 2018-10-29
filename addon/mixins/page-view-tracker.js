@@ -2,15 +2,15 @@
 import Mixin from '@ember/object/mixin';
 import { on } from '@ember/object/evented';
 /**
- * Implements the logic to use the Piwik tracker to send pageview events.
+ * Implements the logic to use the Matomo/Piwik tracker to send pageview events.
  *
  * Make sure to extend the main application router with this mixin to enable the
  * automatic pageview tracking when transitioning into a new route.
  *
  * @class PageViewTrackerMixin
  * @example
- * import Piwik from 'ember-cli-piwik/mixins/page-view-tracker'
- * const Router = Ember.Router.extend(Piwik, {
+ * import Matomo from 'ember-cli-matomo/mixins/page-view-tracker'
+ * const Router = Ember.Router.extend(Matomo, {
  *   // ...
  * });
  * @see {@link http://emberjs.com/api/classes/Ember.Route.html#event_didTransition|didTransition event}

@@ -1,6 +1,6 @@
-# ember-cli-piwik
+# ember-cli-matomo
 
-Inject Matomo/Piwik tracking into an ember-cli application.
+Inject Matomo (formerly known as Piwik) tracking into an ember-cli application.
 
 Forked from ember-cli-piwik, which was marked **[p]lease note that this is not production-ready software**, but found quite production-ready by some (except for a "ember-cli-babel 5 is deprecated" warning during the build process, which is fixed here).
 
@@ -9,7 +9,7 @@ Forked from ember-cli-piwik, which was marked **[p]lease note that this is not p
 In your project root, run:
 
 ```bash
-ember install ember-cli-piwik
+ember install ember-cli-matomo
 ```
 
 ## Configuration
@@ -23,7 +23,7 @@ In order to configure your application, add the following object to your
 environments:
 
 ```javascript
-piwik: {
+matomo: {
   sid: 123,
   url: 'https://your-piwik.endpoint.com'
 }
@@ -33,16 +33,16 @@ You can have independent site IDs and URLs per environment, for example:
 
 ```javascript
 if (environment === 'development') {
-  ENV.piwik = {
+  ENV.matomo = {
     sid: 3,
-    url: 'http://your.piwik.domain/and/path'
+    url: 'http://your.matomo.domain/and/path'
   }
 }
 
 // ...
 
 if (environment === 'production') {
-  ENV.piwik = {
+  ENV.matomo = {
     sid: 7,
     url: '//another-piwik.endpoint.com'
   }
@@ -65,17 +65,17 @@ module.exports = function(environment) {
 
   if (environment === 'development') {
     // ...
-    ENV.piwik.sid = 2;
+    ENV.matomo.sid = 2;
   }
 
   if (environment === 'test') {
     // ...
-    ENV.piwik.sid = 7;
+    ENV.matomo.sid = 7;
   }
 
   if (environment === 'production') {
     // ...
-    ENV.piwik.sid = 19;
+    ENV.matomo.sid = 19;
   }
 
   return ENV;
@@ -94,7 +94,7 @@ mixin:
 // app/router.js
 import Ember from 'ember';
 import config from './config/environment';
-import Piwik from 'ember-cli-piwik/mixins/page-view-tracker';
+import Piwik from 'ember-cli-matomo/mixins/page-view-tracker';
 
 const Router = Ember.Router.extend(Piwik, {
   location: config.locationType
@@ -116,7 +116,7 @@ event title.
 Clone this project, install the dependencies, then run the tests:
 
 ```bash
-$ git clone https://github.com/unwiredbrain/ember-cli-piwik.git
+$ git clone https://github.com/unwiredbrain/ember-cli-matomo.git
 $ npm install && bower install
 $ npm test
 ```
@@ -128,11 +128,16 @@ $ npm test
 [4]: https://github.com/pgrippi
 [5]: https://github.com/pgrippi/ember-cli-google-analytics
 
+[Massimo Lombardo][6] for [ember-cli-piwik][7].
+
+[6]: https://github.com/unwiredbrain/
+[7]: https://github.com/unwiredbrain/ember-cli-piwik/
+
 ## License
 
 The MIT License (MIT)
 
-Copyright (c) 2015 Massimo Lombardo
+Copyright (c) 2018
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
