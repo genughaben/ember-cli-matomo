@@ -1,4 +1,3 @@
-/* jshint node: true */
 'use strict';
 
 
@@ -9,7 +8,7 @@
  * @member {String} head
  * @member {String} body
  */
-var templates = {
+let templates = {
   head: '<script>var _paq=[["setSiteId",{{PIWIK_SID}}],["setTrackerUrl","{{PIWIK_URL}}/piwik.php"],["enableLinkTracking"]]</script>',
   body: '<script src="{{PIWIK_URL}}/piwik.js" async defer></script>'
 };
@@ -23,11 +22,7 @@ var templates = {
  * @return {Boolean} Returns `true` if configured, `false` otherwise.
  */
 function isConfigured(config) {
-  if (config.piwik && config.piwik.url && config.piwik.sid) {
-    return true;
-  }
-
-  return false;
+  return !!(config.piwik && config.piwik.url && config.piwik.sid);
 }
 
 
