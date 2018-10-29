@@ -4,7 +4,7 @@ import Piwik from 'ember-cli-piwik/mixins/page-view-tracker';
 
 const Router = EmberRouter.extend(Piwik, {
   location: config.locationType,
-  rootURL: config.rootURL
+  rootURL: config.rootURL,
 });
 
 Router.map(function() {

@@ -2,12 +2,13 @@ import {
   module,
   test
 } from 'qunit';
-import Ember from 'ember';
+import { run } from '@ember/runloop';
+import EmberObject from '@ember/object';
 import startApp from '../../helpers/start-app';
 import PageViewTrackerMixin from 'ember-cli-piwik/mixins/page-view-tracker';
 
-var application;
-var originalPush;
+let application;
+let originalPush;
 
 module('mixin:page-view-tracker', {
   beforeEach: function() {
@@ -16,20 +17,20 @@ module('mixin:page-view-tracker', {
   },
 
   afterEach: function() {
-    Ember.run(application, 'destroy');
+    run(application, 'destroy');
     window._paq.push = originalPush;
   }
 });
 
 test('it works', function(assert) {
-  var PageViewTrackerObject = Ember.Object.extend(PageViewTrackerMixin);
-  var subject = PageViewTrackerObject.create();
+  const PageViewTrackerObject = EmberObject.extend(PageViewTrackerMixin);
+  const subject = PageViewTrackerObject.create();
 
   assert.ok(subject, 'can be consumed by objects');
 });
 
 test('shoud call the tracker when transitioning into a route', function(assert) {
-  var called = false;
+  let called = false;
 
   window._paq.push = function() {
     called = true;

@@ -1,6 +1,6 @@
 /* global _paq */
-import Ember from 'ember';
-
+import Mixin from '@ember/object/mixin';
+import { on } from '@ember/object/evented';
 /**
  * Implements the logic to use the Piwik tracker to send pageview events.
  *
@@ -10,13 +10,13 @@ import Ember from 'ember';
  * @class PageViewTrackerMixin
  * @example
  * import Piwik from 'ember-cli-piwik/mixins/page-view-tracker'
- * var Router = Ember.Router.extend(Piwik, {
+ * const Router = Ember.Router.extend(Piwik, {
  *   // ...
  * });
  * @see {@link http://emberjs.com/api/classes/Ember.Route.html#event_didTransition|didTransition event}
  * @since 0.0.2
  */
-export default Ember.Mixin.create({
+export default Mixin.create({
   /**
    * Calls the Piwik tracker to send a pageview.
    *
@@ -25,10 +25,9 @@ export default Ember.Mixin.create({
    * @member {Function} trackPiwikPageView
    * @since 0.0.2
    */
-  trackPiwikPageView: Ember.on('didTransition', function() {
+  trackPiwikPageView: on('didTransition', function() {
     _paq.push([
-      'trackPageView',
-      Ember.get(this, 'url')
+      'trackPageView', this.get('url')
     ]);
   })
 });
