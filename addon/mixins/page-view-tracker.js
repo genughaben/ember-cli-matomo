@@ -17,6 +17,8 @@ import { on } from '@ember/object/evented';
  * @since 0.0.2
  */
 export default Mixin.create({
+
+
   /**
    * Calls the Piwik tracker to send a pageview.
    *
@@ -26,8 +28,11 @@ export default Mixin.create({
    * @since 0.0.2
    */
   trackPiwikPageView: on('didTransition', function() {
-    _paq.push([
-      'trackPageView', this.get('url')
-    ]);
+    // required to check for fastboot; checks if in browser
+    if(!!window && !!window.document) {
+      _paq.push([
+        'trackPageView', this.get('url')
+      ]);
+    }
   })
 });
