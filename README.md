@@ -1,4 +1,4 @@
-# ember-cli-matomo
+# ember-cli-matomo - fastboot compatible
 
 Inject Matomo (formerly known as Piwik) tracking into an ember-cli application.
 
